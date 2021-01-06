@@ -1,29 +1,49 @@
+body {
+  background-color:#e0ebe0de;
+}
 .header{
-background-color:rgb(88, 198, 88);
-max-width: 600px;
+/* background-color:rgb(88, 198, 88); */
+max-width: 60%;
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+position: relative;
 }
 
+.top-buttons {
+position: relative;
+  
+}
+
+.top-buttons {
+
+}
 #mapid { 
     
 
     margin: auto;
  
-    border: 5px solid #0f0f05;
+   
   
     padding: 10px;
     
-    position: absolute;
+    position: relative;
     
-    left: 50%;
     
-    top: 50%;
-    
-    transform: translate(-50%, -50%);
-    
-    padding: 10px;
     height: 280px; 
-    width: 400px;
+    width: 95%;
+    margin-top: 20px;
+    margin-bottom: 300px;
   
   }
+#spawn {
+position: relative;
+bottom: 300px;
+left: 25px;
+}
 
+#help {
+  position: relative;
+  
+}
   
