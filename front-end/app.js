@@ -72,9 +72,12 @@ function findNearbyRestuaraunts(event){
 
         const longitude = location.longitude;
         const latitude = location.latitude;
+        const address = location.address;
+        const ratingNumber = restaurant.user_rating.aggregate_rating;
+        const ratingText = restaurant.user_rating.rating_text;
 
         const restaurantMarker = L.marker([latitude, longitude], {icon:restaurantIcon}).addTo(mymap);
-        restaurantMarker.bindPopup(name,img).openPopup();
+        restaurantMarker.bindPopup(`<b>${name}- <br>${address}</b>, <br>🌟${ratingNumber} ${ratingText}`).openPopup();
 })
 
 )
