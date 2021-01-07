@@ -23,8 +23,8 @@ var restaurantIcon= L.icon({
     iconUrl: 'restIcon.png',
     shadowUrl: 'shadow.png',
 
-    iconSize:     [38, 50], // size of the icon
-    shadowSize:   [50, 64], // size of the shadow
+    iconSize:     [28, 40], // size of the icon
+    shadowSize:   [20, 54], // size of the shadow
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     shadowAnchor: [22, 94],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
@@ -35,24 +35,32 @@ const welcomeMessage = '<h1>Hello User welcome to the app</h1>'
 marker.bindPopup(welcomeMessage).openPopup();
 // circle.bindPopup("I am a circle.");
 
+const locationInfo = document.querySelector('.location');
+let clickedURL = ""
 var popup = L.popup();
 function onMapClick(e) {
     popup
         .setLatLng(e.latlng)
         .setContent("You clicked the map at " + e.latlng.toString())
         .openOn(mymap);
+        
+        const lat= e.latlng.lat;
+        const lng= e.latlng.lng;
+        locationInfo.innerHTML = `Latitude:${lat} <br> Longitude:${lng}`
+
+        clickedURL = `https://developers.zomato.com/api/v2.1/geocode?lat=${lat}&lon=${lng}`;
+       
 }
 
 mymap.on('click', onMapClick);
 
-const spawnURL = "https://developers.zomato.com/api/v2.1/geocode?lat=39.73892&lon=-104.9850";
-const spawnButton = document.querySelector('#spawn')
 
+const spawnButton = document.querySelector('#spawn');
 spawnButton.addEventListener('click', findNearbyRestuaraunts)
 
 function findNearbyRestuaraunts(event){ 
     event.preventDefault()
-    fetch(spawnURL, {
+    fetch(clickedURL, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -67,8 +75,8 @@ function findNearbyRestuaraunts(event){
         const img = `<img src="${restaurant.featured_image}">`
         const name = restaurant.name
         // console.log(apiObject)
-        console.log(restaurant);
-        console.log(img);
+        // console.log(restaurant);
+        // console.log(img);
 
         const longitude = location.longitude;
         const latitude = location.latitude;
@@ -76,13 +84,19 @@ function findNearbyRestuaraunts(event){
         const ratingNumber = restaurant.user_rating.aggregate_rating;
         const ratingText = restaurant.user_rating.rating_text;
 
+
         const restaurantMarker = L.marker([latitude, longitude], {icon:restaurantIcon}).addTo(mymap);
-        restaurantMarker.bindPopup(`<b>${name}- <br>${address}</b>, <br>🌟${ratingNumber} ${ratingText}`).openPopup();
-})
+        restaurantMarker.bindPopup(`<p style = "font-family: 'Ubuntu', sans-serif;font-size:16px"><b>${name}- <br>${address}</b>, <br>🌟${ratingNumber} ${ratingText}<p>`).openPopup();
+        createNearbyCards
+    })
 
 )
-
-function parseJSON(response){
-return response.json()
 }
-   }
+    
+function parseJSON(response){
+    return response.json()
+    }
+       function createNearbyCards(restaurantIndex){
+        const restaurant = restaurantIndex.restaurant
+
+       }

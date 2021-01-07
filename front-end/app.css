@@ -39,8 +39,13 @@ position: relative;
 #spawn {
 position: relative;
 bottom: 300px;
-left: 25px;
+left: 2x;
 }
+.location {
+  position: relative;
+  bottom: 300px;
+  left: 2x;
+  }
 
 #help {
   position: relative;
