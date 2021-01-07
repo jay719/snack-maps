@@ -87,7 +87,7 @@ function findNearbyRestuaraunts(event){
 
         const restaurantMarker = L.marker([latitude, longitude], {icon:restaurantIcon}).addTo(mymap);
         restaurantMarker.bindPopup(`<p style = "font-family: 'Ubuntu', sans-serif;font-size:16px"><b>${name}- <br>${address}</b>, <br>🌟${ratingNumber} ${ratingText}<p>`).openPopup();
-        createNearbyCards
+        createNearbyCards(restaurantIndex)
     })
 
 )
@@ -96,7 +96,28 @@ function findNearbyRestuaraunts(event){
 function parseJSON(response){
     return response.json()
     }
-       function createNearbyCards(restaurantIndex){
-        const restaurant = restaurantIndex.restaurant
+const nearbySection = document.querySelector('.nearby')
+
+function createNearbyCards(restaurantIndex){
+
+    const restaurantCard = document.createElement('div')
+    restaurantCard.classList.add("res-card")
+    const restaurant = restaurantIndex.restaurant
+    const location = restaurant.location;      
+
+    const img = document.createElement('img')
+    img.src = restaurant.featured_image
+    img.alt = restaurant.name
+    img.classList.add("card-img")
+
+    const title = document.createElement('h1')
+    title.textContent = restaurant.name
+
+    const ratingNumber = document.createElement('p')
+    ratingNumber.textContent = restaurant.user_rating.aggregate_rating;
+
+    const address = location.address;
+    restaurantCard.append(title,img,ratingNumber,address)
+    nearbySection.append(restaurantCard)
 
        }

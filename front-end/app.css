@@ -46,9 +46,28 @@ left: 2x;
   bottom: 300px;
   left: 2x;
   }
+  .nearby {
+    position: relative;
+    bottom: 287px;
+    left: 2x;
+  }
 
 #help {
   position: relative;
   
 }
+.card-img {
+    height: 100px;
+  }
+.res-card {
   
+  padding-bottom: 10px;
+}
+.nearby{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+ 
+  grid-auto-rows: auto;
+   
+  grid-gap: 1rem;
+}
