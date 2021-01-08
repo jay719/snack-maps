@@ -14,7 +14,7 @@ class AuthenticationController < ApplicationController
                 }
                 secret = "topsecret"
                 token = JWT.encode payload, secret
-                render json:{token: token}, status: :created
+                render json: { token: token, user: @user.username }, status: :created
             end
         end
     end
