@@ -23,8 +23,31 @@ const closer2 = document.getElementsByClassName('close2')[0];
        }
     }
 
+const signupForm = document.querySelector('.modal1 form')
+const signupMessage = document.querySelector('.modal1 .message')
 
-      
+signupForm.addEventListener("submit", event => {
+    event.preventDefault();
+    const formData = new Formdata(event.target)
+    fetch("http://localhost:3000/users", {
+        method="POST",
+        headers:{
+            "Content-type": "application/json",
+
+        },
+        body: JSON.stringify ({
+            username: formData.get("username"),
+            password: formData.get("password"),
+        })
+    }) .then(parseJSON)
+    .then( response => {
+        const { username, password_digest } = response.user
+        // const username = response.user.username
+        // const password = response.user.password
+        signupMessage.textContent = `Your Map Name is ${username}, and you're super secret phrase is ${password_digest}`
+    })
+    event.target.reset()
+})      
         
     //     // When the user clicks anywhere outside of the modal, close it
     //   window.onclick = function(event) {
