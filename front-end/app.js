@@ -23,14 +23,57 @@ const closer2 = document.getElementsByClassName('close2')[0];
        }
     }
 
-const signupForm = document.querySelector('.modal1 form')
-const signupMessage = document.querySelector('.modal1 .message')
+const signupForm = document.querySelector('.modal1-form')
+const signupMessage = document.querySelector('.message')
 
 signupForm.addEventListener("submit", event => {
     event.preventDefault();
-    const formData = new Formdata(event.target)
+    const formData = new FormData (event.target)
     fetch("http://localhost:3000/users", {
-        method="POST",
+        method:"POST",
+        headers:{
+            "Content-type": "application/json",
+
+        },
+        body: JSON.stringify ({
+            username: formData.get("user_name"),
+            password: formData.get("passphrase"),
+        })
+    }) .then(parseJSON)
+    .then( response => {
+        const { username, password_digest } = response.user
+        console.log(username)
+        // const username = response.user.username
+        // const password = response.user.password
+        signupMessage.textContent = `Your Map Name is ${username}, and you're super secret phrase is: ... nah im just playing 😂`
+    }).catch( error => {
+        signupMessage.textContent = "What did you break 😡💢confused"
+    })
+    event.target.reset()
+})      
+const loginForm = document.querySelector('#signin-form')
+const loginMessage = document.querySelector('.message2')
+const signinBtn = document.querySelector('#signin-btn')
+signinBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+     
+    loginForm.classList.remove("hidden")
+    console.log("clicked");
+
+
+})
+
+
+
+
+
+loginForm.addEventListener("submit", event => {
+    event.preventDefault();
+    
+    const formData = new FormData (event.target)
+    console.log(formData)
+    fetch("http://localhost:3000/login", {
+        method:"POST",
         headers:{
             "Content-type": "application/json",
 
@@ -38,13 +81,21 @@ signupForm.addEventListener("submit", event => {
         body: JSON.stringify ({
             username: formData.get("username"),
             password: formData.get("password"),
+    
         })
-    }) .then(parseJSON)
+
+    }) .then(response => {
+        if (!response.ok) throw new Error("Fam... you're embarrassing me")
+        return response.json()
+    })
     .then( response => {
-        const { username, password_digest } = response.user
-        // const username = response.user.username
-        // const password = response.user.password
-        signupMessage.textContent = `Your Map Name is ${username}, and you're super secret phrase is ${password_digest}`
+        
+        loginMessage.textContent = ` 🐐 ${response.user} Signed in🐐 You can... you can actually type?`
+        loginForm.classList.add('hidden')
+        loginMessage.classList.remove('hidden')
+    }).catch( error => {
+        loginMessage.textContent = error.message
+        
     })
     event.target.reset()
 })      
