@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
@@ -11,15 +13,97 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
+
+    
     <script src="app.js" defer></script>
     <link rel="stylesheet" href="app.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap" rel="stylesheet">
+   <style>
+       body {
+        font-family: 'Ubuntu', sans-serif;
+    }
+   </style>
 </head>
 <body>
-    <div class="header">Hello 
-        Hi
+    <div>
+       
+        <h1 class="header">Hello 
+            Welcome to the Most personalized Food Finder App
+        </h1>
+        <a href="index.html">Reset</a>
+        <button type="button" class="top-buttons" id="modalBtn1">Sign In</button>
+        <button type="button" class="top-buttons" id="modalBtn2">Contact Us</button>
+        
+       
     </div>
+    <div id="mapid"> </div>
+    <section class="filterSection">
+        <h2>Filter by Click or Use our Search Options</h2>
+        <div class="clickSearch"> 
+            <h3>Click on the Map to Start</h3>
+            <div class="location">
+            </div>
+            <button type="button" id="spawn">Load Nearby Restaurants</button>
+            <a href="#help">Help</a>
+        </div>
+        <h3>Search the City for your Favorite Dining experience </h3>
+        <form class="filter" method="GET" action="/index.html">
+            <label for="entity_id">City</label>
+            <input type="text" id="city" name="entity_id"><br><br>
 
-    <div id="mapid"></div>
-  
+            <label for='establishment_type'>Favorite Type of Eatery?</label>
+            <select name='establishment_type' id='establishment'></select>
+
+            <label for='cuisines'>Favorite Dish?!</label>
+            <select name='cuisines' id='cuisines'>
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+    
+    <section class="nearby"></section>
+    <section id="help"> <p class="help-text">How It Works 🤔:</p>  
+        <video class="hidden" id="video" preload="auto" autoplay loop muted="muted" volume="0"> 
+        <source src="tutorial.mp4" type="video/mp4"> 
+        </video>
+    </section>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Welcome to the site Friend!</h2>
+            <h3>Please sign in with your username and password <br> For our new users please select the "Anime Club" button below for more information.</h3>
+            <p> 
+              
+                <form method="POST" action="http://localhost:3000/users">
+                    <label for="user_name">Username:</label>
+                    <input id='user_name' name='user_name' type="text" placeholder=" Here !">
+                    
+                    <label for="passphrase">Password:</label>
+                    <input id='passphrase' name='passphrase' type="password" placeholder=" Here !">
+        
+                    <input type="submit" value='Sign in'>
+                </form>
+                ------------------------------------------------------------------------------------------------------------------------------------------------
+             
+                
+            </p>
+        </div>
+    </div>
+    <div id="modal2" class="modal">
+        <div class="modal-content" id="modal-content2">
+            <span class="close2">&times;</span>
+            <img class="modal-img">
+            
+            <img src="panda.gif">
+            <img class="cooking" src="cooking.gif">
+            <h2 class="card-title">!</h2>
+            <p class="address"></p>
+            <h3></h3>
+               
+             
+                
+            
+        </div>
+    </div>
 </body>
 </html>
