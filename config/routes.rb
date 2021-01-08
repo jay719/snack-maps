@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :index]
   post "login", to: "authentication#login"
-  get "treehouses", to: "securityhouses#index"
+  get "securityhouses", to: "securityhouses#index"
 end

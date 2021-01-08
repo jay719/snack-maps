@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :username
       t.string :password_digest
       t.timestamps
+      # can be anything such as their real name or other qualities
     end
   end
 end
