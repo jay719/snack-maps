@@ -1,5 +1,39 @@
+const btn1 = document.querySelector('#modalBtn1');
 
-  const mymap = L.map('mapid').setView([39.73892, -104.9850], 11);
+const modal1 = document.getElementById('modal1');
+const modal2 = document.getElementById('modal2');
+
+const closer = document.getElementsByClassName('close')[0];
+const closer2 = document.getElementsByClassName('close2')[0];
+       // When the user clicks on the button, open the modal
+     btn1.onclick = function() {
+       modal1.style.display = "block";
+     }
+       
+       // When the user clicks on <span> (x), close the modal
+     closer.onclick = function() {
+       modal1.style.display = "none";
+     }
+       
+       // When the user clicks anywhere outside of the modal, close it
+     window.onclick = function(event) {
+       if (event.target == modal1) {
+         modal1.style.display = "none";
+       }
+    }
+
+
+      
+        
+    //     // When the user clicks anywhere outside of the modal, close it
+    //   window.onclick = function(event) {
+    //     if (event.target == modal2) {
+    //       modal2.style.display = "none";
+    //     }
+    //  }
+
+ 
+ const mymap = L.map('mapid').setView([39.73892, -104.9850], 11);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -29,6 +63,17 @@ var restaurantIcon= L.icon({
     shadowAnchor: [22, 94],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
+var playerIcon= L.icon({
+    iconUrl: 'potatoe.png',
+    shadowUrl: 'shadow.png',
+
+    iconSize:     [35, 46], // size of the icon
+    shadowSize:   [20, 54], // size of the shadow
+    iconAnchor:   [2, 0], // point of the icon which will correspond to marker's location
+    shadowAnchor: [-4, -1],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
 
 const welcomeMessage = '<h1>Hello User welcome to the app</h1>'
 
@@ -47,18 +92,30 @@ function onMapClick(e) {
         const lat= e.latlng.lat;
         const lng= e.latlng.lng;
         locationInfo.innerHTML = `Latitude:${lat} <br> Longitude:${lng}`
-
+        const playerMarker = L.marker([lat, lng], {icon:playerIcon}).addTo(mymap);
         clickedURL = `https://developers.zomato.com/api/v2.1/geocode?lat=${lat}&lon=${lng}`;
        
 }
 
 mymap.on('click', onMapClick);
 
+let video = document.querySelector('#video')
+const comeOutButton = document.querySelector('.help-text')
+// video.classlist.add('hidden')
+console.log(video)
+comeOutButton.addEventListener('click', (event) => {
+    event.preventDefault();
+     
+    video.classList.remove("hidden")
+    console.log("clicked");
+
+
+})
 
 const spawnButton = document.querySelector('#spawn');
-spawnButton.addEventListener('click', findNearbyRestuaraunts)
+spawnButton.addEventListener('click', findNearbyRestaurants)
 
-function findNearbyRestuaraunts(event){ 
+function findNearbyRestaurants(event){ 
     event.preventDefault()
     fetch(clickedURL, {
         method: "GET",
@@ -96,14 +153,24 @@ function findNearbyRestuaraunts(event){
 function parseJSON(response){
     return response.json()
     }
+
 const nearbySection = document.querySelector('.nearby')
+const cardTitle = document.querySelector('.cardTitle')
 
 function createNearbyCards(restaurantIndex){
+    const restaurantLink = document.createElement('a')
 
+  
+    const hiddenID = document.createElement('p');
+    hiddenID.classList.add('hidden');
+    hiddenID.textContent = restaurantIndex.restaurant.R.res_id;
+
+    // restaurantLink.href = `restaurant.html?restaurant_id=${restaurantID}`
     const restaurantCard = document.createElement('div')
     restaurantCard.classList.add("res-card")
     const restaurant = restaurantIndex.restaurant
     const location = restaurant.location;      
+
 
     const img = document.createElement('img')
     img.src = restaurant.featured_image
@@ -113,11 +180,74 @@ function createNearbyCards(restaurantIndex){
     const title = document.createElement('h1')
     title.textContent = restaurant.name
 
+
     const ratingNumber = document.createElement('p')
     ratingNumber.textContent = restaurant.user_rating.aggregate_rating;
 
     const address = location.address;
-    restaurantCard.append(title,img,ratingNumber,address)
-    nearbySection.append(restaurantCard)
+
+    const btn2 = document.createElement('button')
+    btn2.textContent ="Learn More";
+    btn2.classList.add('myBtn')
+
+    btn2.onclick = function() {
+        modal2.style.display = "block";
+
+      }
+        // When the user clicks on <span> (x), close the modal
+     closer2.onclick = function() {
+        modal2.style.display = "none";
+      }
+      window.onclick = function(event) {
+        if (event.target == modal2) {
+          modal2.style.display = "none";
+        }
+     }
+    restaurantCard.append(title,img,ratingNumber,address,btn2, hiddenID)
+    restaurantLink.append(restaurantCard)
+    nearbySection.append(restaurantLink)
+    
+    
 
        }
+       const filter = document.querySelector('filter')
+filter.addEventListener('submit', (event) => {
+    event.preventDefault();
+})
+// console.log(filter)
+// function filterRestaurants(){ 
+//     `https://developers.zomato.com/api/v2.1/search?entity_id=529&entity_type=city&cuisines=5`
+//     }
+
+
+//        function findNearbyRestaurants(event){ 
+//         event.preventDefault()
+//         fetch(clickedURL, {
+//             method: "GET",
+//             headers: {
+//                 Accept: "application/json",
+//                 "user-key": "a6631f3561d12ac2fa67b3d8cc55d409",
+//             },
+        
+//         })
+//         .then(parseJSON)
+//         .then(apiObject=> apiObject.nearby_restaurants.forEach(restaurantIndex => {
+//        const selectedResturauntURL = `https://developers.zomato.com/api/v2.1/restaurant?res_id=${restaurantId}`
+
+//        fetch(selectedResturauntURL, {
+//            method: "GET",
+//            headers: {
+//                Accept: "application/json",
+//                "user-key": "a6631f3561d12ac2fa67b3d8cc55d409",
+//            },
+       
+//        })
+//            .then(parseJSON)
+//            .then(addRestaurantData)
+       
+// function addRestaurantData(restaurant){
+//            console.log(restaurant)
+//        }
+       
+
+
