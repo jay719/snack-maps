@@ -1,29 +1,29 @@
-#Snack Maps
+## Snack Maps
 Welcome to Snack Maps! This app lets you find resturaunts in a given location with a simple click of a button. As you make your way through the map, markers will spawn giving you a sneak peak of the resturaunts nearby. If you would like extra information on a particular restaurant, please scroll to the bottom to locate the resturaunts cardd.
 
-#Inspiration
+## Inspiration
 Everyone loves food and when making this app I wanted the user to have as much control as possible when it comes to fullfilling their appetites. Our compettiters clog their screens up with unneccesary information that is more distracting than good. We on the other hand give you full control of what restuarants you see and how you see them!
 
-#Technologies
+## Technologies
 Ruby
 Rails
 Javascript
 SQLite3
 Active Record
 
-#Demo Video
+## Demo Video
 N/A
 
-#Setup
+## Setup
 To access Snack Maps, users must clone this Github repository and open it in their code editor.
 Install the Ruby gems by running "bundle install" and "bundle update" if things arent working properly.
 Create your local database by running "rails db:migrate".
 After migrating start up the back-end by running "rails s", and the front-end by running "lite-server", which will open the app in your browser.
 
-#Instructions
+## Instructions
 Sign up for an account and then log in. Once logged in you should see your username in the top left hand corner of the page. From there you are able to access our "userClick" format of finding resturaunts as well as our search bar. Unlike its "click" counterpart, our search forum allows the user to customize which desired city, establishment, or cuisine they are looking for!
 
-#Code Example
+## Code Example
 loginForm.addEventListener("submit", event => {
     event.preventDefault();
     
@@ -91,7 +91,7 @@ class AuthenticationController < ApplicationController
 end
 
        
-#Status
+## Status
 We are fixing the bug with the search option and have removed the code as to not confuse users.
-#Contact
-#Linkedin -Javaria Brascom
+## Contact
+## Linkedin -Javaria Brascom
