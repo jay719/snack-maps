@@ -27,15 +27,15 @@
    </style>
 </head>
 <body>
-    <div>
-       
-        <h1 class="header">Hello 
-            Welcome to the Most personalized Food Finder App
-        </h1>
-        <a href="index.html">Reset</a>
-        <button type="button" class="top-buttons" id="modalBtn1">Sign Up</button>
-        <button type="button" class="top-buttons" id="signin-btn">Sign In</button>
-        
+    <div class="header-div">
+       <div class="inner-header">
+           <div class="logo-container">
+            <h1 class="header">Snack<span>Maps</span></h1>
+            <a href="index.html"class="top-buttons">Reset</a>
+            <button type="button" class="top-buttons" id="modalBtn1">Sign Up</button>
+            <button type="button" class="top-buttons" id="signin-btn">Sign In</button>
+        </div>
+    </div>
        
     </div>
     <form class="hidden" id="signin-form">
@@ -50,29 +50,35 @@
         
     </form>
     <p class="message2"></p>
-    <div id="mapid"> </div>
+    
     <section class="filterSection">
-        <h2>Filter by Click or Use our Search Options</h2>
-        <div class="clickSearch"> 
-            <h3>Click on the Map to Start</h3>
-            <div class="location">
+        <section class="click-search">
+            <h2>Filter by Click or Use our Search Options</h2>
+            <div class="clickSearch"> 
+                <h3>Click on the Map to Start 🖱</h3>
+                <div class="location">
+                </div>
+                <button type="button" id="spawn">Load Nearby Restaurants</button>
+                <a href="#help">Help</a>
             </div>
-            <button type="button" id="spawn">Load Nearby Restaurants</button>
-            <a href="#help">Help</a>
-        </div>
-        <h3>Search the City for your Favorite Dining experience </h3>
-        <form class="filter" method="GET" action="/index.html">
-            <label for="entity_id">City</label>
-            <input type="text" id="city" name="entity_id"><br><br>
+        </section>
+        <section class="search">
+            <h2>Search the City for Your Favorite Dining Experience </h2>
+            <h3>Type in your destination and select on of the filters below:</h3>
+            <form class="filter" method="GET" action="/index.html">
+                <label for="entity_id">City</label>
+                <input type="text" id="city" name="entity_id"><br><br>
 
-            <label for='establishment_type'>Favorite Type of Eatery?</label>
-            <select name='establishment_type' id='establishment'></select>
+                <label for='establishment_type'>Favorite Type of Eatery?</label>
+                <select name='establishment_type' id='establishment'></select>
 
-            <label for='cuisines'>Favorite Dish?!</label>
-            <select name='cuisines' id='cuisines'>
-            <input type="submit" value="Submit">
-        </form>
+                <label for='cuisines'>Favorite Dish?!</label>
+                <select name='cuisines' id='cuisines'>
+                <input type="submit" value="Submit">
+            </form>
+        </section>
     </section>
+    <div id="mapid"> </div>
     
     <section class="nearby"></section>
     <section id="help"> <p class="help-text">How It Works 🤔:</p>  
@@ -83,8 +89,8 @@
     <div id="modal1" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Welcome to the site Friend!</h2>
-            <h3>Please sign in with your username and password <br> For our new users please select the "Anime Club" button below for more information.</h3>
+            <h2>Welcome to the Snack Maps</h2>
+            <h3>Please provide a username and password to never go hungry again <br> After you sign in click the "Help" button.</h3>
             <p> 
               
                 <form class="modal1-form">
@@ -111,12 +117,10 @@
             
             <img src="panda.gif">
             <img class="cooking" src="cooking.gif">
-            <h2 class="card-title">!</h2>
-            <p class="address"></p>
-            <h3></h3>
+            <h1 class="card-title">!</h1>
+            <h2 class="address"></h2>
+            <h3 class="cost"></h3>
                
-             
-                
             
         </div>
     </div>

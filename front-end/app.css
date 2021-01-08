@@ -1,15 +1,50 @@
 body {
   background-color:#e0ebe0de;
 }
-.header{
-/* background-color:rgb(88, 198, 88); */
-max-width: 60%;
-text-align: center;
-margin-left: auto;
-margin-right: auto;
-position: relative;
+
+.header-div{
+  width: 100%;
+  height: 80px;
+  display: block;
+  background-color: #e0ebe0de;
+
+}
+.inner-header{
+  width: 1000px;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+  background-color: #ffffffde;
+  text-align: center;
 }
 
+.logo-container{
+  height: 100%;
+  display: table;
+  float: left;
+}
+.inner-header:hover{
+  background-color: #000000de;
+  color: #fff;
+}
+.logo-container h1 {
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: 200;
+  }
+  .logo-container h1 span{
+    font-weight: 800;
+  }
+.top-buttons {
+margin: 20px;
+right: -600px;
+top: 20px;
+}
+.click-search{
+  left: 2px:
+}
 #modalBtn1{
   background-image: url('accountglass.png');
 }
@@ -21,11 +56,11 @@ position: relative;
   left: 0;
   top: 0;
   width: 100%; /* Full width */
-  height: 1 00%; /* Full height */
+  height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  z-index: 90;
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  z-index: 200;
 
 }
 #modal2 {
@@ -35,12 +70,14 @@ position: relative;
   top: 0;
   bottom: 10px;
   width: 100%; /* Full width */
-  height: 1 00%; /* Full height */
+  height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background: #fff;
+  padding: 20px 15px;
+  box-shadow:0 5px 150px rgba(64, 64, 64, 0.5);
   z-index: 100;
-  
+  opacity: 1;
+  border: none;
 
 }
 
@@ -48,11 +85,11 @@ position: relative;
 
 .modal-content {
   
-  background-color:#c8e6c8de;
-margin: 15% auto; /* 15% from the top and centered */
+background-color: #c3dac3de;
+margin: 5% auto; 
 padding: 20px;
-border: 1px solid #888;
-width: 80%; /* Could be more or less, depending on screen size */
+
+width: 70%; /* Could be more or less, depending on screen size */
 z-index: 130;
 bottom: 10px;
  
@@ -99,9 +136,7 @@ position: relative;
   
 }
 
-.top-buttons {
 
-}
 #mapid { 
     
     z-index: 50;
@@ -116,20 +151,26 @@ position: relative;
     
     height: 280px; 
     width: 95%;
-    margin-top: 20px;
+    margin-bottom: 20px;
   
   
   }
 
-.filterSection{
-  position: ;
+.search{
+ position: relative;
+  
 }
 .filter{
-  position: absolute;
-  
+ width: fit-content;
+}
+.filterSection{
+  display: flex; 
+  justify-content: space-between;
+  margin: 30px;
 }
 .location {
   position: relative;
+  margin-bottom: 20px;
 
   }
 #spawn {
@@ -143,16 +184,27 @@ position: relative;
   }
 #help {
   position: relative;
-  bottom: -100px;
+  bottom: -150px;
   
 }
 
 .card-img {
     height: 100px;
+    position: relative;
   }
 .res-card {
   cursor: pointer;
   padding-bottom: 10px;
+  background: #fff;
+  padding: 20px 15px;
+  box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
+  0 0  0 2px rgb(255,255,255),
+  0.3em 0.3em 1em rgba(0,0,0,0.3);
+  transition: 0.3s ease-in-out;
+  height: 150px;
+}
+.res-card:hover{
+  height: 250px;
 }
 .nearby{
   position: relative;
@@ -196,4 +248,7 @@ height: 300px;
   height: 100px;
   right: 40px;
   z-index: 400;
+}
+.message2 span {
+  position: fixed;
 }

@@ -90,7 +90,7 @@ loginForm.addEventListener("submit", event => {
     })
     .then( response => {
         
-        loginMessage.textContent = ` 🐐 ${response.user} Signed in🐐 You can... you can actually type?`
+        loginMessage.innerHTML = ` <span>🐐 ${response.user} Signed in🐐</span> <br> You can... you can actually type?`
         loginForm.classList.add('hidden')
         loginMessage.classList.remove('hidden')
     }).catch( error => {
@@ -100,12 +100,7 @@ loginForm.addEventListener("submit", event => {
     event.target.reset()
 })      
         
-    //     // When the user clicks anywhere outside of the modal, close it
-    //   window.onclick = function(event) {
-    //     if (event.target == modal2) {
-    //       modal2.style.display = "none";
-    //     }
-    //  }
+ 
 
  
  const mymap = L.map('mapid').setView([39.73892, -104.9850], 11);
@@ -233,7 +228,8 @@ const nearbySection = document.querySelector('.nearby')
 const modalImg = document.querySelector('.modal-img');
 const cardTitle = document.querySelector('.card-title');
 const modalAddress = document.querySelector('.address');
-
+const cost = document.querySelector('.cost');
+console.log(cost)
 function createNearbyCards(restaurantIndex){
   
     const hiddenID = document.createElement('p');
@@ -252,27 +248,30 @@ function createNearbyCards(restaurantIndex){
     img.alt = restaurant.name
     img.classList.add("card-img")
 
+   
+    
     const title = document.createElement('h1')
     title.textContent = restaurant.name
 
 
     const ratingNumber = document.createElement('p')
     ratingNumber.textContent = restaurant.user_rating.aggregate_rating;
-    console.log(restaurant)
     const cuisines = restaurant.cuisines
     const address = location.address;
+   
 
    
         // When the user clicks on <span> (x), close the modal
      
-    restaurantCard.append(title,img,ratingNumber,address,hiddenID);
+    restaurantCard.append(title,img,ratingNumber,address, hiddenID);
     nearbySection.append(restaurantCard);
-
+    console.log(restaurant)
     restaurantCard.onclick = function() {
         modal2.style.display = "block";
         modalImg.src = restaurant.featured_image;
-        cardTitle.textContent = restaurant.name;
+        cardTitle.textContent = `${restaurant.name}-⭐${restaurant.user_rating.aggregate_rating}`;
         modalAddress.textContent = address;
+        cost.textContent = `Average cost per date: $${restaurant.average_cost_for_two}`
         modal2.append(hiddenID)
       }
     closer2.onclick = function() {
