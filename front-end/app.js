@@ -45,7 +45,7 @@ signupForm.addEventListener("submit", event => {
         console.log(username)
         // const username = response.user.username
         // const password = response.user.password
-        signupMessage.textContent = `Your Map Name is ${username}, and you're super secret phrase is: ... nah im just playing 😂`
+        signupMessage.textContent = `Your Map Name is ${username}, and you're super secret phrase is: ... nah im just playing get out of here man 😂`
     }).catch( error => {
         signupMessage.textContent = "What did you break 😡💢confused"
     })
@@ -90,17 +90,28 @@ loginForm.addEventListener("submit", event => {
     })
     .then( response => {
         
-        loginMessage.innerHTML = ` <span>🐐 ${response.user} Signed in🐐</span> <br> You can... you can actually type?`
-        loginForm.classList.add('hidden')
+        loginMessage.innerHTML = ` <span id="imessage2">🐐 ${response.user} Signed in🐐</span> <br> You can... you can actually type?`
+        loginForm.classList.add('hidden');
         loginMessage.classList.remove('hidden')
     }).catch( error => {
         loginMessage.textContent = error.message
         
     })
+    const imessage = document.getElementById('imessage2')
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        console.log(scrolled);
+        if (scrolled >= 32){
+            imessage2.style.backgroundColor = "white"; 
+            imessage2.style.left = "621px"
+        imessage2.style.color = "gold";}
+        
+    })
+    
     event.target.reset()
 })      
+
         
- 
 
  
  const mymap = L.map('mapid').setView([39.73892, -104.9850], 11);
