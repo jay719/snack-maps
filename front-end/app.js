@@ -23,14 +23,57 @@ const closer2 = document.getElementsByClassName('close2')[0];
        }
     }
 
-const signupForm = document.querySelector('.modal1 form')
-const signupMessage = document.querySelector('.modal1 .message')
+const signupForm = document.querySelector('.modal1-form')
+const signupMessage = document.querySelector('.message')
 
 signupForm.addEventListener("submit", event => {
     event.preventDefault();
-    const formData = new Formdata(event.target)
+    const formData = new FormData (event.target)
     fetch("http://localhost:3000/users", {
-        method="POST",
+        method:"POST",
+        headers:{
+            "Content-type": "application/json",
+
+        },
+        body: JSON.stringify ({
+            username: formData.get("user_name"),
+            password: formData.get("passphrase"),
+        })
+    }) .then(parseJSON)
+    .then( response => {
+        const { username, password_digest } = response.user
+        console.log(username)
+        // const username = response.user.username
+        // const password = response.user.password
+        signupMessage.textContent = `Your Map Name is ${username}, and you're super secret phrase is: ... nah im just playing get out of here man 😂`
+    }).catch( error => {
+        signupMessage.textContent = "What did you break 😡💢confused"
+    })
+    event.target.reset()
+})      
+const loginForm = document.querySelector('#signin-form')
+const loginMessage = document.querySelector('.message2')
+const signinBtn = document.querySelector('#signin-btn')
+signinBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+     
+    loginForm.classList.remove("hidden")
+    console.log("clicked");
+
+
+})
+
+
+
+
+
+loginForm.addEventListener("submit", event => {
+    event.preventDefault();
+    
+    const formData = new FormData (event.target)
+    console.log(formData)
+    fetch("http://localhost:3000/login", {
+        method:"POST",
         headers:{
             "Content-type": "application/json",
 
@@ -38,23 +81,37 @@ signupForm.addEventListener("submit", event => {
         body: JSON.stringify ({
             username: formData.get("username"),
             password: formData.get("password"),
+    
         })
-    }) .then(parseJSON)
-    .then( response => {
-        const { username, password_digest } = response.user
-        // const username = response.user.username
-        // const password = response.user.password
-        signupMessage.textContent = `Your Map Name is ${username}, and you're super secret phrase is ${password_digest}`
+
+    }) .then(response => {
+        if (!response.ok) throw new Error("Fam... you're embarrassing me")
+        return response.json()
     })
+    .then( response => {
+        
+        loginMessage.innerHTML = ` <span id="imessage2">🐐 ${response.user} Signed in🐐</span> <br> You can... you can actually type?`
+        loginForm.classList.add('hidden');
+        loginMessage.classList.remove('hidden')
+    }).catch( error => {
+        loginMessage.textContent = error.message
+        
+    })
+    const imessage = document.getElementById('imessage2')
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        console.log(scrolled);
+        if (scrolled >= 32){
+            imessage2.style.backgroundColor = "white"; 
+            imessage2.style.left = "621px"
+        imessage2.style.color = "gold";}
+        
+    })
+    
     event.target.reset()
 })      
+
         
-    //     // When the user clicks anywhere outside of the modal, close it
-    //   window.onclick = function(event) {
-    //     if (event.target == modal2) {
-    //       modal2.style.display = "none";
-    //     }
-    //  }
 
  
  const mymap = L.map('mapid').setView([39.73892, -104.9850], 11);
@@ -182,7 +239,8 @@ const nearbySection = document.querySelector('.nearby')
 const modalImg = document.querySelector('.modal-img');
 const cardTitle = document.querySelector('.card-title');
 const modalAddress = document.querySelector('.address');
-
+const cost = document.querySelector('.cost');
+console.log(cost)
 function createNearbyCards(restaurantIndex){
   
     const hiddenID = document.createElement('p');
@@ -201,27 +259,30 @@ function createNearbyCards(restaurantIndex){
     img.alt = restaurant.name
     img.classList.add("card-img")
 
+   
+    
     const title = document.createElement('h1')
     title.textContent = restaurant.name
 
 
     const ratingNumber = document.createElement('p')
     ratingNumber.textContent = restaurant.user_rating.aggregate_rating;
-    console.log(restaurant)
     const cuisines = restaurant.cuisines
     const address = location.address;
+   
 
    
         // When the user clicks on <span> (x), close the modal
      
-    restaurantCard.append(title,img,ratingNumber,address,hiddenID);
+    restaurantCard.append(title,img,ratingNumber,address, hiddenID);
     nearbySection.append(restaurantCard);
-
+    console.log(restaurant)
     restaurantCard.onclick = function() {
         modal2.style.display = "block";
         modalImg.src = restaurant.featured_image;
-        cardTitle.textContent = restaurant.name;
+        cardTitle.textContent = `${restaurant.name}-⭐${restaurant.user_rating.aggregate_rating}`;
         modalAddress.textContent = address;
+        cost.textContent = `Average cost per date: $${restaurant.average_cost_for_two}`
         modal2.append(hiddenID)
       }
     closer2.onclick = function() {
