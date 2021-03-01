@@ -13,7 +13,7 @@ SQLite3
 Active Record
 
 ## Demo Video
-N/A
+https://www.youtube.com/watch?v=nVxz5scZzgA&ab_channel=JavariaBrascom
 
 ## Setup
 To access Snack Maps, users must clone this Github repository and open it in their code editor.
