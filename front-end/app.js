@@ -6,21 +6,18 @@ const modalContent = document.getElementById('modal-content2')
 
 const closer = document.getElementsByClassName('close')[0];
 const closer2 = document.getElementsByClassName('close2')[0];
-       // When the user clicks on the button, open the modal
-     btn1.onclick = function() {
-       modal1.style.display = "block";
-     }
-       
-       // When the user clicks on <span> (x), close the modal
-     closer.onclick = function() {
-       modal1.style.display = "none";
-     }
-       
-       // When the user clicks anywhere outside of the modal, close it
-     window.onclick = function(event) {
-       if (event.target == modal1) {
-         modal1.style.display = "none";
-       }
+
+    btn1.onclick = function() {
+    modal1.style.display = "block";
+    }
+
+    closer.onclick = function() {
+    modal1.style.display = "none";
+    }
+    window.onclick = function(event) {
+    if (event.target == modal1) {
+        modal1.style.display = "none";
+    }
     }
 
 const signupForm = document.querySelector('.modal1-form')
@@ -45,7 +42,7 @@ signupForm.addEventListener("submit", event => {
         console.log(username)
         // const username = response.user.username
         // const password = response.user.password
-        signupMessage.textContent = `Your Map Name is ${username}, and you're super secret phrase is: ... nah im just playing get out of here man 😂`
+        signupMessage.textContent = `Your Snack Map Name is ${username}, and your password is: ... I hope you remembered it when you sign in 😂`
     }).catch( error => {
         signupMessage.textContent = "What did you break 😡💢confused"
     })
@@ -111,10 +108,8 @@ loginForm.addEventListener("submit", event => {
     event.target.reset()
 })      
 
-        
 
- 
- const mymap = L.map('mapid').setView([39.73892, -104.9850], 11);
+const mymap = L.map('mapid').setView([39.73892, -104.9850], 11);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -127,12 +122,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 const marker = L.marker([39.70, -104.989]).addTo(mymap);
 
-// const circle = L.circle([39.71, -104.989], {
-//     color: 'red',
-//     fillColor: '#8470ff3',
-//     fillOpacity: 0.5,
-//     radius: 1000
-// }).addTo(mymap);
 
 var restaurantIcon= L.icon({
     iconUrl: 'restIcon.png',
@@ -159,7 +148,7 @@ var playerIcon= L.icon({
 const welcomeMessage = '<h1>Hello User welcome to the app</h1>'
 
 marker.bindPopup(welcomeMessage).openPopup();
-// circle.bindPopup("I am a circle.");
+
 
 const locationInfo = document.querySelector('.location');
 let clickedURL = ""
@@ -182,7 +171,6 @@ mymap.on('click', onMapClick);
 
 let video = document.querySelector('#video')
 const comeOutButton = document.querySelector('.help-text')
-// video.classlist.add('hidden')
 console.log(video)
 comeOutButton.addEventListener('click', (event) => {
     event.preventDefault();
@@ -215,7 +203,6 @@ function findNearbyRestaurants(event){
         // console.log(apiObject)
         // console.log(restaurant);
         // console.log(img);
-
         const longitude = location.longitude;
         const latitude = location.latitude;
         const address = location.address;
@@ -242,7 +229,7 @@ const modalAddress = document.querySelector('.address');
 const cost = document.querySelector('.cost');
 console.log(cost)
 function createNearbyCards(restaurantIndex){
-  
+
     const hiddenID = document.createElement('p');
     hiddenID.classList.add('hidden');
     hiddenID.textContent = restaurantIndex.restaurant.R.res_id;
@@ -259,7 +246,7 @@ function createNearbyCards(restaurantIndex){
     img.alt = restaurant.name
     img.classList.add("card-img")
 
-   
+
     
     const title = document.createElement('h1')
     title.textContent = restaurant.name
@@ -269,11 +256,7 @@ function createNearbyCards(restaurantIndex){
     ratingNumber.textContent = restaurant.user_rating.aggregate_rating;
     const cuisines = restaurant.cuisines
     const address = location.address;
-   
 
-   
-        // When the user clicks on <span> (x), close the modal
-     
     restaurantCard.append(title,img,ratingNumber,address, hiddenID);
     nearbySection.append(restaurantCard);
     console.log(restaurant)
@@ -284,50 +267,18 @@ function createNearbyCards(restaurantIndex){
         modalAddress.textContent = address;
         cost.textContent = `Average cost per date: $${restaurant.average_cost_for_two}`
         modal2.append(hiddenID)
-      }
-    closer2.onclick = function() {
+    }
+closer2.onclick = function() {
+    modal2.style.display = "none";
+    
+    
+    }
+    window.onclick = function(event) {
+    if (event.target == modal2) {
         modal2.style.display = "none";
-        
-        
-      }
-      window.onclick = function(event) {
-        if (event.target == modal2) {
-          modal2.style.display = "none";
-        }
-     }
+    }
+    }
     }
     
-   
-//        function findNearbyRestaurants(event){
-
-//   const selectedResturauntURL = `https://developers.zomato.com/api/v2.1/restaurant?res_id=${restaurantId}`
-       
-
-//        fetch(selectedResturauntURL, {
-//            method: "GET",
-//            headers: {
-//                Accept: "application/json",
-//                "user-key": "a6631f3561d12ac2fa67b3d8cc55d409",
-//            },
-       
-//        })
-//            .then(parseJSON)
-//            .then(addRestaurantData)
-       
-// function addRestaurantData(restaurant){
-//            console.log(restaurant)
-//        }
-
-
-
-
-// function filterRestaurants(){ 
-//     `https://developers.zomato.com/api/v2.1/search?entity_id=529&entity_type=city&cuisines=5`
-//     } 
-// const filter = document.querySelector('filter')
-// filter.addEventListener('submit', (event) => {
-//     event.preventDefault();
-// })
-       
 
 
