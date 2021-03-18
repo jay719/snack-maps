@@ -1,130 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
 
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/8.3.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.3.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.3.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/8.3.0/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/8.3.0/firebase-functions.js"></script>
+    <script defer src="/__/firebase/8.3.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/8.3.0/firebase-storage.js"></script>
+    <script defer src="/__/firebase/8.3.0/firebase-analytics.js"></script>
+    <script defer src="/__/firebase/8.3.0/firebase-remote-config.js"></script>
+    <script defer src="/__/firebase/8.3.0/firebase-performance.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-    
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
-
-    
-    <script src="app.js" defer></script>
-    <link rel="stylesheet" href="app.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap" rel="stylesheet">
-    
-   <style>
-       body {
-        font-family: 'Ubuntu', sans-serif;
-    }
-   </style>
-</head>
-<body>
-    <div class="header-div">
-       <div class="inner-header">
-           <div class="logo-container">
-            <h1 class="header">Snack<span>Maps</span></h1>
-            <a href="index.html"class="top-buttons">Reset</a>
-            <button type="button" class="top-buttons" id="modalBtn1">Sign Up</button>
-            <button type="button" class="top-buttons" id="signin-btn">Sign In</button>
-        </div>
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">
+      <h2>Welcome</h2>
+      <h1>Firebase Hosting Setup Complete</h1>
+      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
     </div>
-       
-    </div>
-    <form class="hidden" id="signin-form">
-        <label for="username">Username:</label>
-        <input id='username' name='username' type="text" placeholder="Put yo name already">
-        
-        <label for="password">Password:</label>
-        <input id='password' name='password' type="password" placeholder="Super Secret shhh">
+    <p id="load">Firebase SDK Loading&hellip;</p>
 
-        <input type="submit" value='Sign in'>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-        
-    </form>
-    <p class="message2"></p>
-    
-    <section class="filterSection">
-        <section class="click-search">
-            <h2>Filter by Click or Use our Search Options</h2>
-            <div class="clickSearch"> 
-                <h3>Click on the Map to Start 🖱</h3>
-                <div class="location">
-                </div>
-                <button type="button" id="spawn">Load Nearby Restaurants</button>
-                <a href="#help">Help</a>
-            </div>
-        </section>
-        <section class="search">
-            <h2>Search the City for Your Favorite Dining Experience </h2>
-            <h3>Type in your destination and select on of the filters below:</h3>
-            <form class="filter" method="GET" action="/index.html">
-                <label for="entity_id">City</label>
-                <input type="text" id="city" name="entity_id"><br><br>
-
-                <label for='establishment_type'>Favorite Type of Eatery?</label>
-                <select name='establishment_type' id='establishment'></select>
-
-                <label for='cuisines'>Favorite Dish?!</label>
-                <select name='cuisines' id='cuisines'>
-                <input type="submit" value="Submit">
-            </form>
-        </section>
-    </section>
-    <div id="mapid"> </div>
-    
-    <section class="nearby"></section>
-    <section id="help"> <p class="help-text">How It Works 🤔:</p>  
-        <video class="hidden" id="video" preload="auto" autoplay loop muted="muted" volume="0"> 
-        <source src="tutorial.mp4" type="video/mp4"> 
-        </video>
-    </section>
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Welcome to the Snack Maps</h2>
-            <h3>Please provide a username and password to never go hungry again <br> After you sign in click the "Help" button.</h3>
-            <p> 
-              
-                <form class="modal1-form">
-                    <label for="user_name">Username:</label>
-                    <input id='user_name' name='user_name' type="text" placeholder="Put yo name already">
-                    
-                    <label for="passphrase">Password:</label>
-                    <input id='passphrase' name='passphrase' type="password" placeholder="Super Secret shhh">
-        
-                    <input type="submit" value='Sign up'>
-
-                    <p class="message"></p>
-                    <img class="modal-gifs"src="banana.gif" id="banana">
-                </form>                                                                                                                                          
-                <img class="modal-gifs"src="cat.gif">  
-             
-                
-            </p>
-        </div>
-    </div>
-    <div id="modal2" class="modal">
-        <div class="modal-content" id="modal-content2">
-            <span class="close2">&times;</span>
-            <img class="modal-img">
-            
-            <img src="panda.gif">
-            <img class="cooking" src="cooking.gif">
-            <h1 class="card-title">!</h1>
-            <h2 class="address"></h2>
-            <h3 class="cost"></h3>
-               
-            
-        </div>
-    </div>
-    
-</body>
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </body>
 </html>
