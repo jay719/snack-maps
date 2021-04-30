@@ -42,9 +42,9 @@ signupForm.addEventListener("submit", event => {
         console.log(username)
         // const username = response.user.username
         // const password = response.user.password
-        signupMessage.textContent = `Your Snack Map Name is ${username}, and your password is: ... I hope you remembered it when you sign in 😂`
+        signupMessage.textContent = `Your Snack Map Name is ${username}, and your password is: ... I hope you remember it when you sign in 😂`
     }).catch( error => {
-        signupMessage.textContent = "What did you break 😡💢confused"
+        signupMessage.textContent = "What did you break 😡💢...confusion... Please contact javariab17@gmail.com"
     })
     event.target.reset()
 })      
