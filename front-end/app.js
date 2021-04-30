@@ -82,7 +82,7 @@ loginForm.addEventListener("submit", event => {
         })
 
     }) .then(response => {
-        if (!response.ok) throw new Error("Fam... you're embarrassing me")
+        if (!response.ok) throw new Error("Incorrect password. If you can not remember it please feel free to create a new user and contact us to delete the old one 👌🏾😄")
         return response.json()
     })
     .then( response => {
