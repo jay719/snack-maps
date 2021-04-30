@@ -26,7 +26,7 @@ const signupMessage = document.querySelector('.message')
 signupForm.addEventListener("submit", event => {
     event.preventDefault();
     const formData = new FormData (event.target)
-    fetch("http://localhost:3000/users", {
+    fetch("https://fathomless-stream-68461.herokuapp.com/users", {
         method:"POST",
         headers:{
             "Content-type": "application/json",
@@ -69,7 +69,7 @@ loginForm.addEventListener("submit", event => {
     
     const formData = new FormData (event.target)
     console.log(formData)
-    fetch("http://localhost:3000/login", {
+    fetch("https://fathomless-stream-68461.herokuapp.com/login", {
         method:"POST",
         headers:{
             "Content-type": "application/json",
