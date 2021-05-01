@@ -249,9 +249,9 @@ display: none;
 }
 button{
   padding: 0;
-  border: none;
   background: none;
   cursor: pointer;
+  color: rgb(27, 126, 115);
 }
 a { color:red;
   cursor: pointer;
