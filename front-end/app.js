@@ -134,7 +134,7 @@ var restaurantIcon= L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 var playerIcon= L.icon({
-    iconUrl: 'potatoe.png',
+    iconUrl: 'https://vignette.wikia.nocookie.net/characters/images/6/66/Kirby_(KRTDL).png/revision/latest?cb=20140622151800',
     shadowUrl: 'shadow.png',
 
     iconSize:     [35, 46], // size of the icon
@@ -149,6 +149,7 @@ const welcomeMessage = '<h1>Hello User welcome to the app</h1>'
 
 marker.bindPopup(welcomeMessage).openPopup();
 
+let playerMarker = {};
 
 const locationInfo = document.querySelector('.location');
 let clickedURL = ""
@@ -156,15 +157,21 @@ var popup = L.popup();
 function onMapClick(e) {
     popup
         .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
+        .setContent("The location of where you clicked has been saved, are you ready to find some food??" )
         .openOn(mymap);
         
-        const lat= e.latlng.lat;
-        const lng= e.latlng.lng;
-        locationInfo.innerHTML = `Latitude:${lat} <br> Longitude:${lng}`
-        const playerMarker = L.marker([lat, lng], {icon:playerIcon}).addTo(mymap);
-        clickedURL = `https://developers.zomato.com/api/v2.1/geocode?lat=${lat}&lon=${lng}`;
-       
+    if (playerMarker != undefined) {
+        mymap.removeLayer(playerMarker);
+    };
+
+    const lat = e.latlng.lat;
+    const lng = e.latlng.lng;
+    locationInfo.innerHTML = `Latitude:${lat} <br> Longitude:${lng}`
+    
+    playerMarker = L.marker([lat, lng], {icon:playerIcon}).addTo(mymap);
+    
+    clickedURL = `https://developers.zomato.com/api/v2.1/geocode?lat=${lat}&lon=${lng}`;
+    
 }
 
 mymap.on('click', onMapClick);
