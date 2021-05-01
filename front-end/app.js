@@ -124,10 +124,10 @@ const marker = L.marker([39.70, -104.989]).addTo(mymap);
 
 
 var restaurantIcon= L.icon({
-    iconUrl: 'restIcon.png',
+    iconUrl: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn2.iconfinder.com%2Fdata%2Ficons%2Fbuilding-vol-2%2F512%2Frestaurant-512.png&f=1&nofb=1',
     shadowUrl: 'shadow.png',
 
-    iconSize:     [28, 40], // size of the icon
+    iconSize:     [35, 40], // size of the icon
     shadowSize:   [20, 54], // size of the shadow
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     shadowAnchor: [22, 94],  // the same for the shadow
@@ -138,7 +138,7 @@ var playerIcon= L.icon({
     shadowUrl: 'shadow.png',
 
     iconSize:     [35, 46], // size of the icon
-    shadowSize:   [20, 54], // size of the shadow
+    shadowSize:   [2, 2], // size of the shadow
     iconAnchor:   [2, 0], // point of the icon which will correspond to marker's location
     shadowAnchor: [-4, -1],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
