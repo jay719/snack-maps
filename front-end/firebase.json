@@ -1,10 +1,12 @@
 {
   "hosting": {
+    "site": "snack-maps-7",
     "public": ".",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ]
-  }
+  },
+  "site": "snack-maps-7"
 }
