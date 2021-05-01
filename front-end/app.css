@@ -30,6 +30,9 @@ body {
 .inner-header:hover{
   background-color: #000000de;
   color: rgb(27, 126, 115);
+  
+}
+.header{
   text-shadow:  1px 3px  #e0ebe0de;
 }
 .logo-container h1 {
@@ -46,11 +49,7 @@ body {
 margin-left: 20px;
 top: 40px;
 }
-.top-buttons:hover {
-background-color: white;
 
-
-}
 .click-search{
   left: 2px;
 }
