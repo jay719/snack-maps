@@ -72,7 +72,7 @@ top: 40px;
   text-align: center;
 }
 
-#signup-mdl {
+#cooking-mdl {
   display: none;
   position: fixed;
   left: 0;
@@ -90,7 +90,7 @@ top: 40px;
 
 }
 
-#modal1 h3:hover {
+#signup-mdl h3:hover {
   text-shadow: 1px 0px #000000;
 }
 

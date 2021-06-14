@@ -1,7 +1,7 @@
 const btn1 = document.querySelector('#signup-btn');
 
-const modal1 = document.getElementById('modal1');
-const modal2 = document.getElementById('modal2');
+const modal1 = document.getElementById('signup-mdl');
+const modal2 = document.getElementById('cooking-mdl');
 const modalContent = document.getElementById('modal-content2')
 
 const closer = document.getElementsByClassName('close')[0];
