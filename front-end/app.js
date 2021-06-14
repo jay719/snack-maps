@@ -21,7 +21,7 @@ const closer2 = document.getElementsByClassName('close2')[0];
     }
     }
 
-const signupForm = document.querySelector('.signin-form')
+const signupForm = document.querySelector('.signup-form')
 const signupMessage = document.querySelector('.message')
 
 signupForm.addEventListener("submit", event => {
