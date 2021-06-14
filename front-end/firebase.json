@@ -1,6 +1,7 @@
 {
   "hosting": {
     "site": "snack-maps-7",
+    "target": "snack-maps-7",
     "public": ".",
     "ignore": [
       "firebase.json",
