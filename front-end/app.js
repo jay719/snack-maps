@@ -9,6 +9,7 @@ const closer2 = document.getElementsByClassName('close2')[0];
 
     btn1.onclick = function() {
     modal1.style.display = "block";
+    
     }
 
     closer.onclick = function() {
