@@ -1,4 +1,4 @@
-const btn1 = document.querySelector('#modalBtn1');
+const btn1 = document.querySelector('#signup-btn');
 
 const modal1 = document.getElementById('modal1');
 const modal2 = document.getElementById('modal2');
