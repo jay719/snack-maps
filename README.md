@@ -1,7 +1,6 @@
 ## Snack Maps
 Welcome to Snack Maps! This app lets you find resturaunts in a given location with a simple click of a button. As you make your way through the map, markers will spawn giving you a sneak peak of the resturaunts nearby. If you would like extra informatihttps://github.com/jay719/mod3-project-backendson on a particular restaurant, please scroll to the bottom to locate the resturaunts card.
 
-**Snack Maps Backend-**https://github.com/jay719/mod3-project-backends
 ## Inspiration
 Everyone loves food and when making this app I wanted the user to have as much control as possible when it comes to fullfilling their appetites. Our compettiters clog their screens up with unneccesary information that is more distracting than good. We on the other hand give you full control of what restuarants you see and how you see them!
 
